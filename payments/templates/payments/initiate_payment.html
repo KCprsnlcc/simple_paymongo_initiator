@@ -9,27 +9,40 @@
     <link rel="icon" href="{% static 'payments/paymongo_logo.png' %}" />
   </head>
   <body>
-    <div>
-      <img
-        src="{% static 'payments/paymongo_logo.png' %}"
-        alt="PayMongo Logo"
-        style="width: 150px; display: block; margin: 0 auto"
-      />
+    <!-- Button to Open the Modal -->
+    <button id="open-modal-btn" class="open-modal-btn">Initiate Payment</button>
+
+    <!-- The Modal -->
+    <div id="payment-modal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <img
+            id="paymongologo"
+            src="{% static 'payments/paymongo_logo.png' %}"
+            alt="PayMongo Logo"
+            style="width: 100px"
+          />
+          <h2>Initiate Payment</h2>
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form id="payment-form" method="POST">
+            {% csrf_token %}
+            <label id="amount" for="amount">Amount:</label>
+            <input type="number" name="amount" id="amount" required />
+
+            <label for="payment_method">Payment Method:</label>
+            <select name="payment_method" id="payment_method">
+              <option value="paymaya">PayMaya</option>
+              <option value="card">Card</option>
+            </select>
+
+            <button type="submit">Pay Now</button>
+          </form>
+        </div>
+      </div>
     </div>
-    <h1>Initiate Payment</h1>
-    <form id="payment-form" method="POST">
-      {% csrf_token %}
-      <label for="amount">Amount:</label>
-      <input type="number" name="amount" id="amount" required />
-
-      <label for="payment_method">Payment Method:</label>
-      <select name="payment_method" id="payment_method">
-        <option value="paymaya">PayMaya</option>
-        <option value="card">Card</option>
-      </select>
-
-      <button type="submit">Pay Now</button>
-    </form>
 
     <script src="{% static 'payments/script.js' %}"></script>
   </body>
