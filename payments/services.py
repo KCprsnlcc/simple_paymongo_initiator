@@ -4,7 +4,7 @@ import logging
 from decimal import Decimal
 from .models import Purchase
 
-API_KEY = "sk_test_8jcvwsSRDKr427k7UsRKgrSi"
+API_KEY = "pk_test_vTZohAgZJmS46rBJ9H66AJf1"
 API_URL = "https://api.paymongo.com/v1/payment_intents"
 
 # Configure logging
@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 def create_payment_intent(amount, currency="PHP", payment_method="paymaya"):
     headers = {
-        "Authorization": f"Basic {API_KEY.encode().decode('utf-8')}",
+        "Authorization": f"Basic {API_KEY}",  # Pass the API key directly
         "Content-Type": "application/json",
     }
 

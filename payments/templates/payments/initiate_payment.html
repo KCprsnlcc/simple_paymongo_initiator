@@ -16,6 +16,14 @@
     <div id="payment-modal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
+        <!-- Dialog Notification -->
+        <div
+          id="dialog-notification"
+          class="dialog-notification"
+          style="display: none"
+        >
+          <p>Payment initiated successfully!</p>
+        </div>
         <div class="modal-header">
           <img
             id="paymongologo"
@@ -40,10 +48,11 @@
 
             <button type="submit">Pay Now</button>
           </form>
+          <!-- Loader -->
+          <div id="loader" class="loader" style="display: none"></div>
         </div>
       </div>
     </div>
-
     <script src="{% static 'payments/script.js' %}"></script>
   </body>
 </html>
